@@ -14,13 +14,12 @@ if __name__ == '__main__':
     url = 'http://www.awb-salzlandkreis.de/kalender/'
     response = urllib.request.urlopen(url, data)
     s = response.read()
-    #s = open("results.html").read()
-    
-    
+#    s = open("results.html").read()
+
     parser = KalenderParser(s)
     termine = (parser.returnAbfuhrtermine())
     print('Anzahl Termine: ', len(termine))
-    #print(termine)
+#    print(termine)
     kalender = AbfallIcall(termine)
-    #print(kalender.get_iCal())
+#    print(kalender.get_iCal())
     open('abfalltermine.ics', 'w').write(kalender.get_iCal())
